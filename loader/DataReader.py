@@ -80,6 +80,10 @@ class DataReader(object):
         self.semidict = self.loadjson(semifile)
         self.dialog   = self.loadjson(corpusfile)
 
+        for l in self.s2v['informable'].values():
+            for i in l:
+                self.semidict[i] = [i]
+        self.semidict['temperature'] = ['temperature']
         # producing slot value templates and db represetation
         self.prepareSlotValues()
         self.structureDB()
@@ -365,8 +369,11 @@ class DataReader(object):
                 turn = d['dial'][t]
 
                 # read informable semi 
-                semi = sorted(['pricerange=none','food=none','area=none']) \
-                        if len(info_semi)==0 else deepcopy(info_semi[-1])
+                #semi = sorted(['pricerange=none','food=none','area=none']) \
+                #        if len(info_semi)==0 else deepcopy(info_semi[-1])
+                #modified
+                semi = sorted(['location=none','weatherattribute=none','date=none']) \
+                #        if len(info_semi)==0 else deepcopy(info_semi[-1])
                 for da in turn['usr']['slu']:
                     for s2v in da['slots']:
                         # skip invalid slots
@@ -431,8 +438,10 @@ class DataReader(object):
                 db_logic.append(venue_logic) 
                 
                 # read requestable semi
-                semi =  sorted(['food','pricerange','area'])+\
-                        sorted(['phone','address','postcode'])
+                #semi =  sorted(['food','pricerange','area'])+\
+                #        sorted(['phone','address','postcode'])
+                # modified
+                semi = sorted(['location','weatherattribute','date'])
                 for da in turn['usr']['slu']:
                     for s2v in da['slots']:
                         if s2v[0]=='slot':
@@ -962,15 +971,15 @@ class DataReader(object):
             for t in range(len(m_targetutt)):
                 sent_t = [self.vocab[w] for w in 
                         m_targetutt[t][:m_targetutt_len[t]]][1:-1]
-                if '[VALUE_NAME]' in sent_t: offered=True
+                #if '[VALUE_NAME]' in sent_t: offered=True
                 for requestable in requestables:
                     if '[VALUE_'+requestable.upper()+']' in sent_t:
                         requests.append(self.reqs.index(requestable+'=exist'))
             # compute success
-            if offered: 
-                vmc += 1.
-                if set(requests).issuperset(set(goal[1].nonzero()[0].tolist())):
-                    success += 1.
+
+            vmc += 1.
+            if set(requests).issuperset(set(goal[1].nonzero()[0].tolist())):
+                success += 1.
 
         print '\tCorpus VMC       : %2.2f%%' % (vmc/float(len(self.dialog))*100)
         print '\tCorpus Success   : %2.2f%%' % (success/float(len(self.dialog))*100)

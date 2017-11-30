@@ -1,0 +1,21 @@
+#
+#
+        #
+        #
+        #
+{
+ "address":["address"],
+ "distance":["distance"],
+ "trafficinfo":["trafficinfo"],
+ "poitype":["poitype"],
+ "poi":["poi"],
+ "date":["date"],
+ "location":["location"],
+ "weatherattribute":["weatherattribute"],
+ "room":["room"],
+ "time":["time"],
+ "party":["party"],
+ "agenda":["agenda"],
+ "event":["event"],
+ "name":["name"],
+ "any":["any"]}

@@ -1,0 +1,105 @@
+#
+#
+        #
+        #
+        #
+{
+    "requestable": {
+        "weatherattribute": [],
+        "temperature": []
+    }, 
+    "other": {
+        "name": []
+    }, 
+    "informable": {
+        "weatherattribute": [
+            "snow", 
+            "stormy", 
+            "hail", 
+            "hot", 
+            "rain", 
+            "cold", 
+            "clear skies", 
+            "cloudy", 
+            "warm", 
+            "windy", 
+            "foggy", 
+            "humid", 
+            "frost", 
+            "blizzard", 
+            "drizzle", 
+            "dry", 
+            "dew", 
+            "misty", 
+            "overcast", 
+            "fog",
+                        "20f",
+            "30f",
+            "40f",
+            "50f",
+            "60f",
+            "70f",
+            "80f",
+            "90f",
+            "100f"
+        ],
+        "location": [
+            "oakland", 
+            "san mateo", 
+            "san jose", 
+            "grand rapids", 
+            "boston", 
+            "new york", 
+            "cleveland", 
+            "chicago", 
+            "seattle", 
+            "los angeles", 
+            "san francisco", 
+            "redwood city", 
+            "menlo park", 
+            "exeter", 
+            "mountain view", 
+            "compton", 
+            "inglewood", 
+            "durham", 
+            "manhattan", 
+            "fresno", 
+            "alameda", 
+            "alhambra", 
+            "atherton", 
+            "brentwood", 
+            "camarillo", 
+            "carson", 
+            "corona", 
+            "danville"
+        ],
+        "date": [
+            "today", 
+            "tomorrow", 
+            "weekend", 
+            "next few days", 
+            "two day", 
+            "next week", 
+            "two days", 
+            "2 days", 
+            "monday", 
+            "tuesday", 
+            "wednesday", 
+            "thursday", 
+            "friday", 
+            "saturday", 
+            "sunday"
+        ],
+        "temperature":[
+                        "20f",
+            "30f",
+            "40f",
+            "50f",
+            "60f",
+            "70f",
+            "80f",
+            "90f",
+            "100f"
+        ]
+    }
+}
