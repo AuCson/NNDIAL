@@ -318,7 +318,9 @@ class NNDial(object):
                 flatten_belief_tm1 = flatten_belief_t[:self.inf_dimensions[-1]]
 
                 # for calculating success: check requestable slots match
-                requestables = ['phone','address','postcode','food','area','pricerange']
+                # modified
+                # requestables = ['phone','address','postcode','food','area','pricerange']
+                requestables = ['weatherattribute','date','location']
                 for requestable in requestables:
                     if '[VALUE_'+requestable.upper()+']' in gennerated_utt:
                         reqs.append(self.reader.reqs.index(requestable+'=exist'))
@@ -466,7 +468,9 @@ class NNDial(object):
         print '%12s :\t| %2.2f%%\t| %2.2f%%\t| %2.2f%%\t| %2.2f%%\t|' %\
                 ('joint', p, r, 2*p*r/(p+r), ac)
         print '---- Requestable '+ 63*'-'
-        reqslots = ['area','food','pricerange','address','postcode','phone']#,'change']
+        #reqslots = ['area','food','pricerange','address','postcode','phone']
+        # modified
+        reqslots = ['weatherattribute','date', 'location']
         joint = [0.0 for x in range(4)]
         for i in range(len(reqslots)):
             s = reqslots[i]
@@ -629,7 +633,8 @@ class NNDial(object):
         db_degree, srcfeat, tarfeat, finished, utt_group = data
 
         # for calculating success: check requestable slots match
-        requestables = ['phone','address','postcode']
+        # modified
+        requestables = ['weatherattribute','date','location']
         offer_per_turn  = []
         request_per_turn= []
         target_sents = []
@@ -1158,18 +1163,15 @@ class NNDial(object):
 
     def _statsTable(self):
         return {'informable':{
-                    'pricerange': [10e-9, 10e-4, 10e-4, 10e-4],
-                    'food'      : [10e-9, 10e-4, 10e-4, 10e-4],
-                    'area'      : [10e-9, 10e-4, 10e-4, 10e-4]
+                    'weatherattribute': [10e-9, 10e-4, 10e-4, 10e-4],
+                    'date': [10e-9, 10e-4, 10e-4, 10e-4],
+                    'location': [10e-9, 10e-4, 10e-4, 10e-4]
             },  'requestable':{
-                    'pricerange': [10e-9, 10e-4, 10e-4, 10e-4],
-                    'area'      : [10e-9, 10e-4, 10e-4, 10e-4],
-                    'food'      : [10e-9, 10e-4, 10e-4, 10e-4],
-                    'postcode'  : [10e-9, 10e-4, 10e-4, 10e-4],
-                    'address'   : [10e-9, 10e-4, 10e-4, 10e-4],
-                    'phone'     : [10e-9, 10e-4, 10e-4, 10e-4],
-                    'name'      : [10e-9, 10e-4, 10e-4, 10e-4],
-                    'change'    : [10e-9, 10e-4, 10e-4, 10e-4]
+                    'weatherattribute': [10e-9, 10e-4, 10e-4, 10e-4],
+                    'date': [10e-9, 10e-4, 10e-4, 10e-4],
+                    'location': [10e-9, 10e-4, 10e-4, 10e-4],
+                    'name': [10e-9, 10e-4, 10e-4, 10e-4],
+                    'change': [10e-9, 10e-4, 10e-4, 10e-4]
             },
             'vmc': 10e-7, 'success': 10e-7, 'approp': [10e-7,10e-7]
         }

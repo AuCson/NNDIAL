@@ -83,7 +83,6 @@ class DataReader(object):
         for l in self.s2v['informable'].values():
             for i in l:
                 self.semidict[i] = [i]
-        self.semidict['temperature'] = ['temperature']
         # producing slot value templates and db represetation
         self.prepareSlotValues()
         self.structureDB()
@@ -268,7 +267,7 @@ class DataReader(object):
                 # non delexicalised
                 if len(src)>maxmsrc:
                     maxmsrc = len(src)
-                sourceutt.append(src) 
+                sourceutt.append(src)
            
             # sentence group
             self.sentGroupIndex.append(utt_group)
@@ -486,7 +485,15 @@ class DataReader(object):
         
         # delexicalise all
         sent = self.delexicalise(' '.join(words),mode='all')
-        sent = re.sub(digitpat,'[VALUE_COUNT]',sent)
+        # modified: do not replace digits
+        #sent = re.sub(digitpat,'[VALUE_COUNT]',sent)
+        '''
+        if type == 'source':
+            self.prev_sent = sent
+        else:
+            if 'WEATHERATTRIBUTE' in self.prev_sent:
+                sent = self.delexicalise(' '.join(words), mode='all')
+        '''
         words= sent.split()
         
         # formulate delex positions
@@ -941,7 +948,9 @@ class DataReader(object):
         # parse goal into dict format
         self.goals = []
         # for computing corpus success
-        requestables = ['phone','address','postcode','food','area','pricerange']
+        # modified
+        #requestables = ['phone','address','postcode','food','area','pricerange']
+        requestables = ['weatherattribute']
         vmc, success = 0., 0.
         # for each dialog
         for i in range(len(self.dialog)):

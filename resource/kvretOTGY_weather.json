@@ -5,8 +5,7 @@
         #
 {
     "requestable": {
-        "weatherattribute": [],
-        "temperature": []
+        "weatherattribute": []
     }, 
     "other": {
         "name": []
@@ -89,17 +88,6 @@
             "friday", 
             "saturday", 
             "sunday"
-        ],
-        "temperature":[
-                        "20f",
-            "30f",
-            "40f",
-            "50f",
-            "60f",
-            "70f",
-            "80f",
-            "90f",
-            "100f"
         ]
     }
 }
