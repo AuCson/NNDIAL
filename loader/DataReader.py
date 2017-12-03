@@ -478,13 +478,15 @@ class DataReader(object):
             words = ['</s>'] + words + ['</s>']
         
         # indexing, non-delexicalised
-        if index:
-            idx  = map(lambda w: vocab.index(w) if w in vocab else 0, words)
+        if index: # modified
+            idx = map(lambda w: vocab.index(w) if w in vocab else 0, words)
         else:
             idx = words
-        
+
+
         # delexicalise all
-        sent = self.delexicalise(' '.join(words),mode='all')
+        #sent = self.delexicalise(' '.join(words),mode='all')
+        sent = ' '.join(words)
         # modified: do not replace digits
         #sent = re.sub(digitpat,'[VALUE_COUNT]',sent)
         '''
@@ -529,7 +531,7 @@ class DataReader(object):
             midx = map(lambda w: vocab.index(w) if w in vocab else 0, words)
         else:
             midx = words
-                    
+
         return midx, idx, sltpos, valpos, names
 
     def delexicalise(self,utt,mode='all'):

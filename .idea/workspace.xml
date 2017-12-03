@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39615f08-a1d8-4c68-a4c8-e111ef520c33" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/NDM-Weather.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/NDM-weather-nodelex.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/tracker-weather-nodelex.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/tracker-weather.cfg" afterPath="$PROJECT_DIR$/config/tracker-weather.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/kvret_camfmt_train_weather.json" afterPath="$PROJECT_DIR$/data/kvret_camfmt_train_weather.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loader/DataReader.py" afterPath="$PROJECT_DIR$/loader/DataReader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nn/NNDialogue.py" afterPath="$PROJECT_DIR$/nn/NNDialogue.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resource/kvretOTGY_weather.json" afterPath="$PROJECT_DIR$/resource/kvretOTGY_weather.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,22 +20,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DataReader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loader/DataReader.py">
+      <file leaf-file-name="nndial.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nndial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-37">
-              <caret line="125" column="19" lean-forward="false" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kvret_camfmt_train_weather.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/kvret_camfmt_train_weather.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="747">
-              <caret line="80272" column="26" lean-forward="false" selection-start-line="80272" selection-start-column="26" selection-end-line="80272" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="336">
+              <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+              <folding>
+                <element signature="e#355#365#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,8 +35,28 @@
       <file leaf-file-name="tracker-weather.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/tracker-weather.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
+            <state relative-caret-position="176">
               <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tracker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nn/tracker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-379">
+              <caret line="101" column="8" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nnsds.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nn/nnsds.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="550" column="58" lean-forward="false" selection-start-line="550" selection-start-column="58" selection-end-line="550" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -56,18 +65,18 @@
       <file leaf-file-name="NDM-Weather.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/NDM-Weather.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+            <state relative-caret-position="144">
+              <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NNDialogue.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NNDialogue.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nn/NNDialogue.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1164" column="30" lean-forward="true" selection-start-line="1164" selection-start-column="30" selection-end-line="1164" selection-end-column="30" />
+            <state relative-caret-position="181">
+              <caret line="538" column="36" lean-forward="false" selection-start-line="538" selection-start-column="36" selection-end-line="538" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -77,25 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>id&quot;: 796</find>
-      <find>[SLOT</find>
-      <find>area</find>
-      <find>initNet</find>
-      <find>db</find>
-      <find>test</find>
-      <find>load dialogues</find>
-      <find>dele</find>
-      <find>trainNet</find>
-      <find>stats</find>
-      <find>id&quot;: 895</find>
-      <find>read</find>
-      <find>self.data</find>
-      <find>epoch</find>
-      <find>split</find>
-      <find>vocab_size</find>
-      <find>self.vo</find>
-      <find>self.vocab_size</find>
-      <find>data sta</find>
       <find>addres</find>
       <find>address</find>
       <find>weatherattr</find>
@@ -103,10 +93,29 @@
       <find>temper</find>
       <find>weat</find>
       <find>temperature</find>
-      <find>weather</find>
       <find>wea</find>
-      <find>&quot;temperature&quot;</find>
       <find>change</find>
+      <find>weather</find>
+      <find>lemma</find>
+      <find>lmt</find>
+      <find>&quot;temperature&quot;</find>
+      <find>masked_source</find>
+      <find>dele</find>
+      <find>delexi</find>
+      <find>date</find>
+      <find>inf_trk_l</find>
+      <find>infovs</find>
+      <find>adjust</find>
+      <find>l</find>
+      <find>trk</find>
+      <find>data</find>
+      <find>pos</find>
+      <find>encoder</find>
+      <find>srcfe</find>
+      <find>srcfeat</find>
+      <find>srcfea</find>
+      <find>extracse</find>
+      <find>dlexi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -122,10 +131,13 @@
         <option value="$PROJECT_DIR$/config/NDM-Weather.cfg" />
         <option value="/diskA/xisen/NNDIAL_OGN/NNDIAL/nn/NNDialogue.py" />
         <option value="$PROJECT_DIR$/resource/kvretOTGY_weather.json" />
-        <option value="$PROJECT_DIR$/loader/DataReader.py" />
         <option value="$PROJECT_DIR$/nn/NNDialogue.py" />
-        <option value="/diskA/xisen/NNDIAL_OGN/NNDIAL/loader/DataReader.py" />
         <option value="$PROJECT_DIR$/data/kvret_camfmt_train_weather.json" />
+        <option value="$PROJECT_DIR$/config/tracker-weather-nodelex.cfg" />
+        <option value="$PROJECT_DIR$/config/NDM-weather-nodelex.cfg" />
+        <option value="/diskA/xisen/NNDIAL_OGN/NNDIAL/loader/DataReader.py" />
+        <option value="$PROJECT_DIR$/nn/nnsds.py" />
+        <option value="$PROJECT_DIR$/loader/DataReader.py" />
       </list>
     </option>
   </component>
@@ -213,24 +225,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NNDIAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NNDIAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="loader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -269,7 +263,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/NNDIAL_PURE/NNDIAL" />
+    <property name="last_opened_file_path" value="$USER_HOME$/A-Generative-Persona-Learning-Model" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -297,7 +291,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="NNDIAL" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nndial.py" />
-      <option name="PARAMETERS" value="-config config/NDM-Weather.cfg -mode test" />
+      <option name="PARAMETERS" value="-config config/NDM-Weather.cfg -mode adjust" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
@@ -447,6 +441,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="39615f08-a1d8-4c68-a4c8-e111ef520c33" name="Default" comment="" />
@@ -459,7 +456,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30729166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -467,7 +464,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44262296" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19836065" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -487,61 +484,29 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/loader/DataReader.py</url>
-          <line>376</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/nn/nnsds.py</url>
+          <line>535</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nn/nnsds.py</url>
+          <line>395</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nn/NNDialogue.py</url>
+          <line>530</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="46" />
+      <option name="time" value="54" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="semi" language="Python" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nndial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loader/DataReader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="79" column="13" lean-forward="false" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/kvret_camfmt_train_weather.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/kvretOTGY_weather.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1328">
-          <caret line="83" column="19" lean-forward="false" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///diskA/xisen/NNDIAL_OGN/NNDIAL/loader/DataReader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8992">
-          <caret line="578" column="0" lean-forward="false" selection-start-line="578" selection-start-column="0" selection-end-line="578" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/kvretDB.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -591,7 +556,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#355#364#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -606,6 +573,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8992">
           <caret line="578" column="0" lean-forward="false" selection-start-line="578" selection-start-column="0" selection-end-line="578" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -658,7 +626,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#355#364#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -678,13 +648,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/CamRest.LIDM-RL.model">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/CamRest.tracker.model">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -763,34 +726,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nn/tracker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="200" column="14" lean-forward="false" selection-start-line="200" selection-start-column="11" selection-end-line="200" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nn/nnsds.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nn/encoder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nndial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -803,26 +742,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///diskA/xisen/NNDIAL_OGN/NNDIAL/nn/NNDialogue.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="164" column="0" lean-forward="false" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resource/CamRestOTGY.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-93">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///diskA/xisen/NNDIAL_OGN/NNDIAL/loader/DataReader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1086">
-          <caret line="413" column="0" lean-forward="false" selection-start-line="413" selection-start-column="0" selection-end-line="413" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -835,18 +758,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/NDM-Weather.cfg">
+    <entry file="file:///usr/lib/python2.7/site-packages/nltk/stem/wordnet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/tracker-weather.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        <state relative-caret-position="277">
+          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -859,6 +774,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/tracker-weather-nodelex.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="17" column="38" lean-forward="false" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/CamRest.tracker.model">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/kvret.nodelex.weather.model">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/NDM-weather-nodelex.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///diskA/xisen/NNDIAL_OGN/NNDIAL/nn/NNDialogue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="1123" column="0" lean-forward="false" selection-start-line="1123" selection-start-column="0" selection-end-line="1123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///diskA/xisen/NNDIAL_OGN/NNDIAL/loader/DataReader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="413" column="0" lean-forward="false" selection-start-line="413" selection-start-column="0" selection-end-line="413" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nn/NNDialogue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="538" column="36" lean-forward="false" selection-start-line="538" selection-start-column="36" selection-end-line="538" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/kvret.weather.model">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -867,19 +846,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loader/DataReader.py">
+    <entry file="file://$PROJECT_DIR$/config/NDM-Weather.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-37">
-          <caret line="125" column="19" lean-forward="false" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="19" />
+        <state relative-caret-position="144">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nn/NNDialogue.py">
+    <entry file="file://$PROJECT_DIR$/config/tracker-weather.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1164" column="30" lean-forward="true" selection-start-line="1164" selection-start-column="30" selection-end-line="1164" selection-end-column="30" />
+        <state relative-caret-position="176">
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nn/nnsds.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="550" column="58" lean-forward="false" selection-start-line="550" selection-start-column="58" selection-end-line="550" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nn/tracker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-379">
+          <caret line="101" column="8" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loader/DataReader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="530" column="62" lean-forward="false" selection-start-line="530" selection-start-column="62" selection-end-line="530" selection-end-column="62" />
+          <folding>
+            <element signature="e#355#364#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nndial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <element signature="e#355#365#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
