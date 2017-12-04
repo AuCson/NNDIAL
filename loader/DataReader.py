@@ -485,8 +485,8 @@ class DataReader(object):
 
 
         # delexicalise all
-        #sent = self.delexicalise(' '.join(words),mode='all')
-        sent = ' '.join(words)
+        sent = self.delexicalise(' '.join(words),mode='all')
+        #sent = ' '.join(words)
         # modified: do not replace digits
         #sent = re.sub(digitpat,'[VALUE_COUNT]',sent)
         '''
@@ -681,7 +681,7 @@ class DataReader(object):
         else:
             trksrc = self.delsrcpos
             trktar = self.deltarpos
-        
+        # FFLLAAGG
         corpus = [  self.sourceutts,        self.sourcecutoffs,
                     self.masked_sourceutts, self.masked_sourcecutoffs,
                     self.targetutts,        self.targetcutoffs,

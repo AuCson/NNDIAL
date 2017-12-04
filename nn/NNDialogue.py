@@ -236,6 +236,9 @@ class NNDial(object):
             snapshot, change_label, goal, inf_trk_label, req_trk_label,\
             db_degree, srcfeat, tarfeat, finished, utt_group = testset[cnt]
 
+            # modified
+            masked_source, masked_source_len, masked_target, masked_target_len = source, source_len, target, target_len
+
             # initial selection
             selected_venue  = -1
             venue_offered   = None
@@ -527,6 +530,10 @@ class NNDial(object):
                 snapshot, change, goal, inf_trk_label, req_trk_label,\
                 db_degree, srcfeat, tarfeat, finished, utt_group = data
 
+
+                #modified
+                #masked_source,masked_source_len,masked_target,masked_target_len = source,source_len,target,target_len
+
                 # TODO: improve, default parameters for success
                 success_rewards = [0. for i in range(len(source))]
                 sample = np.array([0 for i in range(len(source))],dtype='int32')
@@ -572,6 +579,10 @@ class NNDial(object):
                 target, target_len, masked_target, masked_target_len,\
                 snapshot, change, goal, inf_trk_label, req_trk_label,\
                 db_degree, srcfeat, tarfeat, finished, utt_group = data
+
+
+                #modified
+                #masked_source,masked_source_len,masked_target,masked_target_len = source,source_len,target,target_len
 
                 # TODO: improve, default parameters for success
                 success_rewards = [0. for i in range(len(source))]
