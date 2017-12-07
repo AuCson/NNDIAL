@@ -323,7 +323,8 @@ class NNDial(object):
                 # for calculating success: check requestable slots match
                 # modified
                 # requestables = ['phone','address','postcode','food','area','pricerange']
-                requestables = ['weatherattribute','date','location']
+                requestables = ['weatherattribute', 'address', 'poi', 'distance', 'time', 'date', 'agenda', 'party',
+                                'trafficinfo', 'room']
                 for requestable in requestables:
                     if '[VALUE_'+requestable.upper()+']' in gennerated_utt:
                         reqs.append(self.reader.reqs.index(requestable+'=exist'))
@@ -473,7 +474,8 @@ class NNDial(object):
         print '---- Requestable '+ 63*'-'
         #reqslots = ['area','food','pricerange','address','postcode','phone']
         # modified
-        reqslots = ['weatherattribute','date', 'location']
+        reqslots = ['weatherattribute', 'address', 'poi', 'distance', 'time', 'date', 'agenda', 'party', 'trafficinfo',
+                        'room']
         joint = [0.0 for x in range(4)]
         for i in range(len(reqslots)):
             s = reqslots[i]
@@ -645,7 +647,8 @@ class NNDial(object):
 
         # for calculating success: check requestable slots match
         # modified
-        requestables = ['weatherattribute','date','location']
+        requestables = ['weatherattribute', 'address', 'poi', 'distance', 'time', 'date', 'agenda', 'party', 'trafficinfo',
+                        'room']
         offer_per_turn  = []
         request_per_turn= []
         target_sents = []

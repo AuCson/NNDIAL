@@ -371,7 +371,8 @@ class DataReader(object):
                 #semi = sorted(['pricerange=none','food=none','area=none']) \
                 #        if len(info_semi)==0 else deepcopy(info_semi[-1])
                 #modified
-                semi = sorted(['location=none','weatherattribute=none','date=none']) \
+                semi = sorted(['location=none','weatherattribute=none','weeklytime=none','date=none','time=none','room=none','agenda=none','event=none','party=none',
+                               'trafficinfo=none','distance=none','poi=none','poitype=none','address=none'])
                 #        if len(info_semi)==0 else deepcopy(info_semi[-1])
                 for da in turn['usr']['slu']:
                     for s2v in da['slots']:
@@ -411,7 +412,10 @@ class DataReader(object):
                 for sem in semi:
                     if 'name=' in sem:
                         continue
+                    # modified
+
                     vec[self.infovs.index(sem)] = 1
+
                     if self.infovs.index(sem) not in self.dontcare:
                         constraints.append(self.infovs.index(sem))
                 semi_idxs.append(vec)
@@ -440,7 +444,8 @@ class DataReader(object):
                 #semi =  sorted(['food','pricerange','area'])+\
                 #        sorted(['phone','address','postcode'])
                 # modified
-                semi = sorted(['location','weatherattribute','date'])
+                semi = sorted(['location','weatherattribute','weeklytime','date','time','room','agenda','event','party',
+                               'trafficinfo','distance','poi','poitype','address'])
                 for da in turn['usr']['slu']:
                     for s2v in da['slots']:
                         if s2v[0]=='slot':
@@ -952,7 +957,7 @@ class DataReader(object):
         # for computing corpus success
         # modified
         #requestables = ['phone','address','postcode','food','area','pricerange']
-        requestables = ['weatherattribute']
+        requestables = ['weatherattribute','address','poi','distance','time','date','agenda','party','trafficinfo','room']
         vmc, success = 0., 0.
         # for each dialog
         for i in range(len(self.dialog)):
