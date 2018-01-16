@@ -376,9 +376,11 @@ class NNDial(object):
                         bn = self.req_dimensions[i]
                         ysem = self.reader.reqs[np.argmax(np.array(\
                                 req_trk_label[t][bn:self.req_dimensions[i+1]+bn]))+bn]
-                        psem = self.reader.reqs[ \
-                            np.argmax(np.array(full_belief_t[infbn+i])) +\
-                            self.req_dimensions[i] ]
+                        
+                            psem = self.reader.reqs[ \
+                                np.argmax(np.array(full_belief_t[infbn+i])) +\
+                                self.req_dimensions[i] ]
+                        
                         prob = np.max(np.array(full_belief_t[infbn+i]))
                         if self.verbose>1:
                             print '  | %16s\t%.3f\t%20s |' % (psem,prob,ysem)
@@ -568,7 +570,7 @@ class NNDial(object):
                         (epoch, self.lr, -train_logp/log10(2)/num_dialog, sec),
                 sys.stdout.flush()
 
-            # validation phase
+            # validatio phase
             self.valid_logp = 0.0
             num_dialog = 0.0
             while True:
@@ -1177,14 +1179,35 @@ class NNDial(object):
 
     def _statsTable(self):
         return {'informable':{
+                    'address':[0]*4,
+                    'weeklytime':[0]*4,
+                    'poi':[0]*4,
+                    'distance':[0]*4,
+                    'poitype':[0]*4,
+                    'trafficinfo':[0]*4,
+                    'room':[0]*4,
+                    'agenda':[0]*4,
+                    'time':[0]*4,
+                    'event':[0]*4,
+                    'party':[0]*4,
                     'weatherattribute': [10e-9, 10e-4, 10e-4, 10e-4],
                     'date': [10e-9, 10e-4, 10e-4, 10e-4],
                     'location': [10e-9, 10e-4, 10e-4, 10e-4]
             },  'requestable':{
+                    'address':[0]*4,
+                    'weeklytime':[0]*4,
+                    'poi':[0]*4,
+                    'distance':[0]*4,
+                    'poitype':[0]*4,
+                    'trafficinfo':[0]*4,
+                    'room':[0]*4,
+                    'agenda':[0]*4,
+                    'time':[0]*4,
+                    'event':[0]*4,
+                    'party':[0]*4,
                     'weatherattribute': [10e-9, 10e-4, 10e-4, 10e-4],
                     'date': [10e-9, 10e-4, 10e-4, 10e-4],
                     'location': [10e-9, 10e-4, 10e-4, 10e-4],
-                    'name': [10e-9, 10e-4, 10e-4, 10e-4],
                     'change': [10e-9, 10e-4, 10e-4, 10e-4]
             },
             'vmc': 10e-7, 'success': 10e-7, 'approp': [10e-7,10e-7]
@@ -1198,9 +1221,16 @@ class NNDial(object):
             for i in range(len(self.req_dimensions)-1):
                 bn = self.req_dimensions[i]
                 # prediction for this req tracker
-                psem = self.reader.reqs[ \
-                    np.argmax(np.array(sem_j[infbn+i])) +\
-                    self.req_dimensions[i] ]
+                try:
+                    psem = self.reader.reqs[ \
+                        np.argmax(np.array(sem_j[infbn+i])) +\
+                        self.req_dimensions[i] ]
+                except IndexError:
+                    print self.reader.reqs
+                    self.reader.reqs.append('unk=exists')
+                    self.reader.reqs.append('unk=none')
+                    self.req_dimensions.append(50)
+                    print sem_j[infbn+i]
                 #print psem
                 # slot & value
                 s,v = psem.split('=')

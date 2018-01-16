@@ -18,6 +18,5 @@
  "agenda":["agenda"],
  "event":["event"],
  "name":["name"],
-        "weeklytime":["weeklytime"],
-        "temperature":["temperature"],
+ "weeklytime":["weeklytime"],
  "any":["any"]}

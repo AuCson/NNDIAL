@@ -898,6 +898,7 @@ class DataReader(object):
                 
                 # user side
                 words = self.delexicalise(turn['usr']['transcript']).split()
+                print(' '.join(words))
                 mwords,words,_,_,_ = self.extractSeq(turn['sys']['sent'],\
                     type='source',index=False)
                 ivocab.extend(mwords)
