@@ -377,7 +377,7 @@ class NNDial(object):
                         ysem = self.reader.reqs[np.argmax(np.array(\
                                 req_trk_label[t][bn:self.req_dimensions[i+1]+bn]))+bn]
                         
-                            psem = self.reader.reqs[ \
+                        psem = self.reader.reqs[ \
                                 np.argmax(np.array(full_belief_t[infbn+i])) +\
                                 self.req_dimensions[i] ]
                         
