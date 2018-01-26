@@ -560,7 +560,7 @@ class DataReader(object):
                         if self.slots[i] in inftoks else self.slots[i]
                 utt = (' '+utt+' ').replace(' '+self.values[i]+' ',' '+tok+' ')
                 utt = utt[1:-1]
-        utt = re.sub(digitpat,'[VALUE_COUNT]',utt)
+        #utt = re.sub(digitpat,'[VALUE_COUNT]',utt)
         return utt
     
     def delexicaliseOne(self,utt,toks,repl):
