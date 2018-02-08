@@ -202,7 +202,8 @@ class NNDial(object):
     ############################ END ################################
     #################################################################
     def testNet(self):
-        
+        jga, fmr = 0,0
+        turns, dials = 0,0
         # testing generation
         np.random.seed(self.seed)
         if self.debug:
@@ -223,9 +224,14 @@ class NNDial(object):
         # gate stats
         gstats = np.zeros((4))
         num_sent = 0.0
-
+        failed = []
         # for each dialog
+
+
+        tp,fp,fn = 0,0,0
         for cnt in range(len(testset)):
+            gen_req_, truth_req_ = set(), set()
+            non_reqs = set()
             # initial state
             if self.verbose>0:
                 print '='*25 + ' Dialogue '+ str(cnt) +' '+ '='*28
@@ -248,6 +254,10 @@ class NNDial(object):
             # for each turn
             reqs = []
             generated_utt_tm1 = ''
+
+            final_match = True
+            valid_dial = False
+
             for t in range(len(source)):
                 if self.verbose>0:
                     print '-'*28 + ' Turn '+ str(t) +' '+ '-'*28
@@ -317,15 +327,30 @@ class NNDial(object):
                 # update history belief
                 flatten_belief_tm1 = flatten_belief_t[:self.inf_dimensions[-1]]
 
+                for i in range(len(self.inf_dimensions) - 1):
+                    bn = self.inf_dimensions[i]
+                    ysem = self.reader.infovs[np.argmax(np.array(
+                        inf_trk_label[t][bn:self.inf_dimensions[i + 1] + bn])) + bn]
+                    slt, val = ysem.split('=')
+                    if 'none' not in ysem:
+                        non_reqs.add(slt)
+
                 # for calculating success: check requestable slots match
-                requestables = ['phone','address','postcode','food','area','pricerange']
+                requestables = {'phone', 'address', 'postcode', 'food', 'area', 'pricerange'}
                 for requestable in requestables:
                     if '[VALUE_'+requestable.upper()+']' in gennerated_utt:
                         reqs.append(self.reader.reqs.index(requestable+'=exist'))
+                        gen_req_.add(requestable)
+
+                for requestable in requestables:
+                    if '[VALUE_' + requestable.upper() + ']' in masked_target_utt:
+                        #reqs.append(self.reader.reqs.index(requestable + '=exist'))
+                        truth_req_.add(requestable)
+
                 # check offered venue
                 if '[VALUE_NAME]' in generated_utt and selected_venue!=None:
                     venue_offered = self.reader.db2inf[selected_venue]
-
+                turn_match = True
                 ############################### debugging ############################ 
                 if self.verbose>0:
                     print 'User Input :\t%s'% source_utt
@@ -341,24 +366,32 @@ class NNDial(object):
                         bn = self.inf_dimensions[i]
                         psem = self.reader.infovs[np.argmax(np.array(full_belief_t[i]))+bn]
                         ysem = self.reader.infovs[np.argmax(np.array(\
-                                inf_trk_label[t][bn:self.inf_dimensions[i+1]+bn]))+bn] 
+                                inf_trk_label[t][bn:self.inf_dimensions[i+1]+bn]))+bn]
                         prob = full_belief_t[i][np.argmax(np.array(full_belief_t[i]))] 
                         #print '%20s\t%.3f\t%20s' % (psem,prob,ysem)
                         if self.verbose>1:
                             print '  | %16s\t%.3f\t%20s |' % (psem,prob,ysem)
-                        
+
                         # counting stats
+                        #, psem = ysem.replace('dontcare','none'), psem.replace('dontcare','none')
                         slt,val = ysem.split('=')
                         if 'none' not in ysem:
                             if psem==ysem: # true positive
                                 stats['informable'][slt][0] += 1.0
                             else: # false negative
                                 stats['informable'][slt][1] += 1.0
+                                turn_match = False
                         else:
                             if psem==ysem: # true negative
                                 stats['informable'][slt][2] += 1.0
                             else: # false positive
                                 stats['informable'][slt][3] += 1.0
+                                turn_match = False
+                if t != len(source) - 1:
+                    if turn_match:
+                        jga += 1
+
+                    turns += 1
 
                 if self.trk=='rnn' and self.trkreq==True:
                     if self.verbose>1:
@@ -409,7 +442,10 @@ class NNDial(object):
                     prob      = full_belief_t[-1][0] if psem==0 else 1-full_belief_t[-1][0]
                     if self.verbose>1:
                         print '  | %16s\t%.3f\t%20s |' % (prdtvenue,prob,truevenue)
-
+                if 'SLOT' in generated_utts[0]:
+                    final_match = turn_match
+                if 'SLOT' in masked_target_utt:
+                    valid_dial = True
                 if self.verbose>0: 
                     match_number = np.argmax(np.array(db_degree_t[-6:]))
                     match_number = str(match_number) if match_number<5 else '>5'
@@ -429,19 +465,43 @@ class NNDial(object):
                 parallel_corpus.append([generated_utts,[masked_target_utt]])
                 best_corpus.append([[generated_utt],[masked_target_utt]])
 
+            if valid_dial:
+                dials += 1
+                if final_match:
+                    fmr += 1
+                #else:
+                #    failed.append(cnt)
             # at the end of the dialog, calculate goal completion rate
-            if venue_offered!=None and finished:
-                if set(venue_offered).issuperset(set(goal[0].nonzero()[0].tolist())):
-                    stats['vmc'] += 1.0
-                    if set(reqs).issuperset(set(goal[1].nonzero()[0].tolist())):
-                        stats['success'] += 1.0
+            #if venue_offered!=None and finished:
+                #if set(venue_offered).issuperset(set(goal[0].nonzero()[0].tolist())):
+            if final_match and valid_dial:
+                stats['vmc'] += 1.0
+                if set(reqs).issuperset(set(goal[1].nonzero()[0].tolist())):
+                    stats['success'] += 1.0
+                else:
+                    failed.append(cnt)
 
+            for req in gen_req_:
+                if req in truth_req_:
+                    tp += 1
+                else:
+                    fp += 1
+            for req in truth_req_:
+                if req not in gen_req_:
+                    fn += 1
+
+        precision, recall = tp / (tp + fp + 1e-8), tp / (tp + fn + 1e-8)
+        f1 = 2 * precision * recall / (precision + recall + 1e-8)
+        print 'succ f1',f1
+        print 'failed',failed
+        print 'joint goal accuracy', jga * 1.0 / turns, turns
+        print 'final match rate', fmr * 1.0 / dials, dials
         # evaluation result
         print 80*'#'
         print 35*'#' + '  Metrics ' + 35*'#'
         print 80*'#'
-        print 'Venue Match Rate     : %.1f%%' % (100*stats['vmc']/float(len(testset)))
-        print 'Task Success Rate    : %.1f%%' % (100*stats['success']/float(len(testset)))
+        print 'Venue Match Rate     : %.1f%%' % (100*stats['vmc']/float(dials))
+        print 'Task Success Rate    : %.1f%%' % (100*stats['success']/float(dials))
         if self.dec!='none':
             print 'BLEU                 : %.4f' % (bscorer.score(best_corpus))
             print 'Semantic Match       : %.1f%%' % (100*stats['approp'][0]/stats['approp'][1])
@@ -748,7 +808,10 @@ class NNDial(object):
     # for interactive use
     def reply(self,user_utt_t,generated_tm1,selected_venue_tm1,
             venue_offered_tm1,flatten_belief_tm1):
-        
+
+        turn_num, valid_dial_num = 0,0
+        jga, fmr = 0,0
+
         # initial belief
         if flatten_belief_tm1==[]:
             flatten_belief_tm1 = np.zeros((self.inf_dimensions[-1]))
