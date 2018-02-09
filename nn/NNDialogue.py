@@ -223,6 +223,8 @@ class NNDial(object):
         # gate stats
         gstats = np.zeros((4))
         num_sent = 0.0
+        jga, fmr = 0,0
+        turns, dials = 0,0        
 
         # for each dialog
         for cnt in range(len(testset)):
@@ -244,7 +246,7 @@ class NNDial(object):
             flatten_belief_tm1 = np.zeros((self.inf_dimensions[-1]))
             for i in range(len(self.inf_dimensions)-1):
                 flatten_belief_tm1[self.inf_dimensions[i+1]-1] = 1.0
-
+            final_match, valid_dial = True, False
             # for each turn
             reqs = []
             generated_utt_tm1 = ''
@@ -339,6 +341,7 @@ class NNDial(object):
                         print '  | %16s%13s%20s|' % ('','Informable','')
                         print '  | %16s\t%5s\t%20s |' % ('Prediction','Prob.','Ground Truth')
                         print '  | %16s\t%5s\t%20s |' % ('------------','-----','------------')
+                    turn_match = True
                     for i in range(len(self.inf_dimensions)-1):
                         bn = self.inf_dimensions[i]
                         psem = self.reader.infovs[np.argmax(np.array(full_belief_t[i]))+bn]
@@ -356,12 +359,19 @@ class NNDial(object):
                                 stats['informable'][slt][0] += 1.0
                             else: # false negative
                                 stats['informable'][slt][1] += 1.0
+                                turn_match = False
                         else:
                             if psem==ysem: # true negative
                                 stats['informable'][slt][2] += 1.0
                             else: # false positive
                                 stats['informable'][slt][3] += 1.0
-
+                                turn_match = False
+                
+                if t != len(source) - 1:
+                    if turn_match:
+                        jga += 1
+                    turns += 1
+                
                 if self.trk=='rnn' and self.trkreq==True:
                     if self.verbose>1:
                         print '  | %16s%13s%20s|' % ('','Requestable','')
@@ -396,7 +406,7 @@ class NNDial(object):
                                 stats['requestable'][slt][2] += 1.0
                             else: # false positive
                                 stats['requestable'][slt][3] += 1.0
-                    
+                   
                     # offer change tracker
                     '''
                     bn = self.req_dimensions[-1]
@@ -418,6 +428,10 @@ class NNDial(object):
                     if self.verbose>1:
                         print '  | %16s\t%.3f\t%20s |' % (prdtvenue,prob,truevenue)
                     '''
+                if 'VALUE' in str(generated_utts[0]):
+                    final_match = turn_match
+                if 'VALUE' in str(masked_target_utt):
+                    valid_dial = True
                 if self.verbose>0: 
                     match_number = np.argmax(np.array(db_degree_t[-6:]))
                     match_number = str(match_number) if match_number<5 else '>5'
@@ -436,14 +450,20 @@ class NNDial(object):
 
                 parallel_corpus.append([generated_utts,[masked_target_utt]])
                 best_corpus.append([[generated_utt],[masked_target_utt]])
-
+            if valid_dial:
+                print '***'
+                dials += 1
+                if final_match:
+                    fmr += 1
+                
             # at the end of the dialog, calculate goal completion rate
             if venue_offered!=None and finished:
                 if set(venue_offered).issuperset(set(goal[0].nonzero()[0].tolist())):
                     stats['vmc'] += 1.0
                     if set(reqs).issuperset(set(goal[1].nonzero()[0].tolist())):
                         stats['success'] += 1.0
-
+        print 'joint goal accuracy', jga * 1.0 / turns, turns
+        print 'final match rate', fmr * 1.0 / dials, dials
         # evaluation result
         print 80*'#'
         print 35*'#' + '  Metrics ' + 35*'#'
