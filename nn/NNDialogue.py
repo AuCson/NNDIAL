@@ -225,10 +225,11 @@ class NNDial(object):
         num_sent = 0.0
         jga, fmr = 0,0
         turns, dials = 0,0        
-
+        tp, fp, fn = 0,0,0
         # for each dialog
         for cnt in range(len(testset)):
             # initial state
+            gen_req, truth_req = set(),set()
             if self.verbose>0:
                 print '='*25 + ' Dialogue '+ str(cnt) +' '+ '='*28
             #print '##############################################################' 
@@ -326,10 +327,14 @@ class NNDial(object):
                 for requestable in requestables:
                     if '[VALUE_'+requestable.upper()+']' in gennerated_utt:
                         reqs.append(self.reader.reqs.index(requestable+'=exist'))
+                        gen_req.add(requestable)
+                for requestable in requestables:
+                    if '[VALUE_'+requestable.upper()+']' in masked_target_utt:
+                        truth_req.add(requestable)
                 # check offered venue
                 if '[VALUE_NAME]' in generated_utt and selected_venue!=None:
                     venue_offered = self.reader.db2inf[selected_venue]
-
+                
                 ############################### debugging ############################ 
                 if self.verbose>0:
                     print 'User Input :\t%s'% source_utt
@@ -455,13 +460,25 @@ class NNDial(object):
                 dials += 1
                 if final_match:
                     fmr += 1
-                
+            
+            for req in gen_req:
+                if req in truth_req:
+                    tp += 1
+                else:
+                    fp += 1
+            for req in truth_req:
+                if req not in gen_req:
+                    fn += 1
+
             # at the end of the dialog, calculate goal completion rate
             if venue_offered!=None and finished:
                 if set(venue_offered).issuperset(set(goal[0].nonzero()[0].tolist())):
                     stats['vmc'] += 1.0
                     if set(reqs).issuperset(set(goal[1].nonzero()[0].tolist())):
                         stats['success'] += 1.0
+        precision, recall = tp / (tp+fp+1e-8), tp/(tp+fn+1e-8)
+        f1 = 2 * precision * recall / (precision + recall + 1e-8)
+        print 'success f1', f1
         print 'joint goal accuracy', jga * 1.0 / turns, turns
         print 'final match rate', fmr * 1.0 / dials, dials
         # evaluation result
